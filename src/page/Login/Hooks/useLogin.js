@@ -71,7 +71,7 @@ function useLogin() {
       navigate("/");
     } catch (error) {
       dispatch(loginFailure());
-      swal("Anda gagal login", "Email anda belum terdaftar silahkan lakukan registrasi terlebih dahulu", "error")
+      swal("Anda gagal login", "Harap periksa kembali email dan password anda", "error")
     }
   };
 
