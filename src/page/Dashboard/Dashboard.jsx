@@ -1,13 +1,8 @@
 import React from "react";
-import Auth from "../../components/auth/index";
-import auth from "../../utils/auth";
+import Dashboard from "../../container/Dashboard/index";
 
-const Dashboard = () => {
-  return (
-    <Auth>
-      <div>Dashboard</div>
-    </Auth>
-  );
-};
+function DashboardPage() {
+  return <Dashboard />;
+}
 
-export default Dashboard;
+export default DashboardPage;
