@@ -7,12 +7,13 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { update, updateField } from '../../redux/FormCar/slice';
 import swal from "sweetalert";
+import { useParams } from 'react-router-dom'
 
 const FormEditCar = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const id = 2583;
+    const params = useParams();
 
     
     const [formValues, setFormValues] = useState({
@@ -22,6 +23,29 @@ const FormEditCar = () => {
         category: null,
         
     });
+    const fetchDataCar = async (e) => {
+        // e.preventDefault();
+
+        try{
+            const response = await axios.get(`https://api-car-rental.binaracademy.org/admin/car/${params.id}`,
+            {
+                headers: {
+                    access_token: 
+                        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGJjci5pbyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NTI0MjUwOX0.ZTx8L1MqJ4Az8KzoeYU2S614EQPnqk6Owv03PUSnkzc"
+                }
+            }
+            );
+            console.log("response", response.data)
+            setFormValues(response.data)
+        }catch(error) {
+            console.log("error", error)
+
+        }
+    };
+
+    useEffect(() => {
+        fetchDataCar(params.id);
+    },[params.id]);
 
     const onChangeFiles = (e) => {
         const selectedFiles = e.target.files;
@@ -47,7 +71,7 @@ const FormEditCar = () => {
         formData.append('image', formValues.image);
         formData.append('category', formValues.category);
         try{
-            const response = await axios.put(`https://api-car-rental.binaracademy.org/admin/car/${id}`, 
+            const response = await axios.put(`https://api-car-rental.binaracademy.org/admin/car/${params.id}`, 
             formData,
             {
                 headers: {
@@ -100,6 +124,7 @@ const FormEditCar = () => {
                                                 className='forminput'
                                                 onChange={(e) => setFormValues({...formValues, name: e.target.value})}
                                                 value={formValues.name ?? ""}
+                                            
                                             />
                                         </Col>
                                     </Row>
@@ -160,7 +185,7 @@ const FormEditCar = () => {
                                                 accept="image/png, image/gif, image/jpeg"
                                                 className='forminput'
                                                 onChange={onChangeFiles}
-                                                value={formValues.image ?? ""}
+                                                // value={formValues.image ?? ""}
                                             />
                                             <p
                                                 className="mb-0"
@@ -208,13 +233,13 @@ const FormEditCar = () => {
                                         <Col sm="4" className="mb-0">
                                             Created at
                                         </Col>
-                                        <Col sm="8">-</Col>
+                                        <Col sm="8">{formValues.createdAt}</Col>
                                     </Row>
                                     <Row>
                                         <Col sm="4" className="mb-0">
                                             Updated at
                                         </Col>
-                                        <Col sm="8">-</Col>
+                                        <Col sm="8">{formValues.updatedAt}</Col>
                                     </Row>
                                 </div>
                             </fieldset>
