@@ -9,12 +9,11 @@
     "@testing-library/user-event": "^13.2.1",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
-<<<<<<< HEAD
+    "boxicons": "^2.1.4",
     "install": "^0.13.0",
-=======
->>>>>>> 0d129b14d4d024b09e03dc6fbc5085aaf8d06d0e
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
+    "react-datepicker": "^4.15.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.7",
     "react-router": "^6.12.1",

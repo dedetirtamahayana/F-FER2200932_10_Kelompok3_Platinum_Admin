@@ -10,7 +10,7 @@ import {
 import "./Dashboard.css";
 
 import iconSidebar from "../../assets/image/Rectangle 63.png";
-import iconHome from "../../assets/image/home.png";
+import iconHome from "../../assets/image/HomeIcon.png";
 import iconSidebar2 from "../../assets/image/Rectangle 62.png";
 import iconCar from "../../assets/image/fi_truck.png";
 import iconHumber from "../../assets/image/fi_menu.png";
@@ -20,8 +20,7 @@ function Dashboard() {
   return (
     <div
       className="d-flex position-relative vh-100 vw-100"
-      style={{ background: "#F4F5F7" }}
-    >
+      style={{ background: "#F4F5F7" }}>
       <div className="d-flex pt-3 p-2" style={{ background: "#0D28A6" }}>
         <div className="text-center text-white">
           <div className="pb-3">
@@ -56,8 +55,7 @@ function Dashboard() {
               />
               <Button
                 variant="outline-primary fw-bold"
-                style={{ color: "#0D28A6", outlineColor: "#0D28A6" }}
-              >
+                style={{ color: "#0D28A6", outlineColor: "#0D28A6" }}>
                 Search
               </Button>
             </Form>
@@ -76,8 +74,7 @@ function Dashboard() {
         </Navbar>
         <div
           className="d-flex pt-3"
-          style={{ width: "15rem", height: "866px", background: "#ffff" }}
-        >
+          style={{ width: "15rem", height: "866px", background: "#ffff" }}>
           <div className="w-100">
             <div className="pt-3 pb-3 ps-4">
               <h5 style={{ color: "#8A8A8A" }}>DASHBOARD</h5>

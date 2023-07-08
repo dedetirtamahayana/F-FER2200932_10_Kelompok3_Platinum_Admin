@@ -11,7 +11,7 @@ function CardCar() {
   //   const category = [{}];
 
   return (
-    <Card style={{ width: "22rem" }}>
+    <Card style={{ width: "18rem" }}>
       <Card.Img variant="top" src={CardImage} />
       <Card.Body>
         <Card.Title>
