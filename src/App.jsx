@@ -5,15 +5,11 @@ import DashboardPage from "./page/Dashboard/DashboardPage";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <DashboardPage />,
-  },
-  {
     path: "/login",
     element: <Login />,
   },
   {
-    path: "/dashboard",
+    path: "/",
     element: <DashboardPage />,
   },
   {

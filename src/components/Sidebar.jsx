@@ -1,48 +1,43 @@
 import logo from "../assets/image/Rectangle 63.png";
-import logo2 from "../assets/image/Rectangle 62.png";
 import iconHome from "../assets/image/HomeIcon.png";
 import iconTruck from "../assets/image/fi_truck.png";
-import { useState } from "react";
-import { Nav, NavLink } from "react-bootstrap";
+import { NavLink } from "react-bootstrap";
 import { useNavigate } from "react-router";
 
-const Sidebar = ({ isOpenSidebar }) => {
-  const [route, setRoute] = useState("Dashboard");
-  const toggleRoute = (value) => {
-    setRoute(value);
-    console.log(route);
-  };
+function Sidebar() {
   const navigate = useNavigate();
-
   return (
-    <div className="d-flex">
-      <div
-        className="vh-100 px-1 text-center text-white py-3"
-        style={{ background: "#0D28A6" }}>
-        <img src={logo} alt="" />
-        <Nav className="navigation-menu  flex-column">
-          <NavLink
-            className="w-100 d-flex flex-column justify-content-center align-items-center text-center"
-            style={{ height: "64px" }}
-            onClick={() => navigate("/dashboard")}>
-            <div className="pt-3" onClick={() => toggleRoute("Dashboard")}>
-              <img src={iconHome} alt="" />
-              <p>Dashboard</p>
-            </div>
-          </NavLink>
-          <NavLink
-            className="w-100 d-flex flex-column justify-content-center align-items-center text-center"
-            style={{ height: "64px" }}
-            onClick={() => navigate("/listcars")}>
-            <div onClick={() => toggleRoute("/listcars")}>
-              <img src={iconTruck} alt="" />
-              <p>Cars</p>
-            </div>
-          </NavLink>
-        </Nav>
-      </div>
+    <div>
+      <aside
+        className="d-block"
+        style={{
+          position: "fixed",
+          background: "#0D28A6",
+          top: 0,
+          left: 0,
+          bottom: 0,
+          width: "80px",
+        }}>
+        <div className="d-flex justify-content-center align-items-center mt-3 mb-4">
+          <img src={logo} alt=" "></img>
+        </div>
+        <NavLink onClick={() => navigate("/")}>
+          <div
+            className="d-flex justify-content-center align-items-center "
+            style={{ color: "white" }}>
+            <img src={iconHome} alt=" "></img>
+          </div>
+          <p style={{ color: "white" }}>Dashboard</p>
+        </NavLink>
+        <NavLink onClick={() => navigate("/listcars")}>
+          <div className="d-flex justify-content-center align-items-center ">
+            <img src={iconTruck} alt=" "></img>
+          </div>
+          <p style={{ color: "white", marginLeft: "7px" }}>List Cars</p>
+        </NavLink>
+      </aside>
     </div>
   );
-};
+}
 
 export default Sidebar;
