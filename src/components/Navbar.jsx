@@ -1,4 +1,4 @@
-import { Nav, Navbar } from "react-bootstrap";
+import { Button, Nav, Navbar } from "react-bootstrap";
 import logo2 from "../../src/assets/image/Rectangle 62.png";
 import iconProfile from "../../src/assets/image/profile.png";
 import hamburger from "../../src/assets/image/fi_menu.png";
@@ -24,13 +24,15 @@ function TopNavbar() {
               type="search"
               placeholder="Search"
               aria-label="Search"
+              style={{ marginRight: "5px" }}
             />
-            <button
+            <Button
+              variant="outline-primary"
               className="btn fw-bold"
               type="submit"
               style={{ color: "#0D28A6", borderColor: "#0D28A6" }}>
               Search
-            </button>
+            </Button>
           </div>
           <div>
             <img className="pe-1" src={iconProfile} alt="" />

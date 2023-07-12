@@ -1,0 +1,14 @@
+.homeButton {
+  background-color: #0d28a6;
+  color: black;
+  border: 2px solid #0d28a6;
+  transition-duration: 0.4s;
+  padding: 0px;
+  width: 100%;
+  color: white;
+}
+
+.homeButton:hover {
+  background-color: #8ca5dd;
+  color: white;
+}

@@ -1,8 +1,8 @@
 import logo from "../assets/image/Rectangle 63.png";
 import iconHome from "../assets/image/HomeIcon.png";
 import iconTruck from "../assets/image/fi_truck.png";
-import { NavLink } from "react-bootstrap";
 import { useNavigate } from "react-router";
+import "./Sidebar.css";
 
 function Sidebar() {
   const navigate = useNavigate();
@@ -21,20 +21,15 @@ function Sidebar() {
         <div className="d-flex justify-content-center align-items-center mt-3 mb-4">
           <img src={logo} alt=" "></img>
         </div>
-        <NavLink onClick={() => navigate("/")}>
-          <div
-            className="d-flex justify-content-center align-items-center "
-            style={{ color: "white" }}>
-            <img src={iconHome} alt=" "></img>
-          </div>
-          <p style={{ color: "white" }}>Dashboard</p>
-        </NavLink>
-        <NavLink onClick={() => navigate("/listcars")}>
-          <div className="d-flex justify-content-center align-items-center ">
-            <img src={iconTruck} alt=" "></img>
-          </div>
-          <p style={{ color: "white", marginLeft: "7px" }}>List Cars</p>
-        </NavLink>
+
+        <button className="homeButton" onClick={() => navigate("/")}>
+          <img src={iconHome} alt=""></img>
+          <p>Dashboard</p>
+        </button>
+        <button className="homeButton" onClick={() => navigate("/listcars")}>
+          <img src={iconTruck} style={{ padding: "10px" }} alt=""></img>
+          <p>List Cars</p>
+        </button>
       </aside>
     </div>
   );

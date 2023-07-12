@@ -1,13 +1,24 @@
 import React from "react";
 import Auth from "../../components/auth";
-import { Container, Row, Col, Button, Image } from "react-bootstrap";
+import Layout from "../../components/Layout";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Image,
+  Breadcrumb,
+  BreadcrumbItem,
+} from "react-bootstrap";
 import CardCar from "./Card";
 import ArrowPng from "../../assets/image/Arrow.png";
 import DeleteConfirm from "./DeleteConfirm";
 
-import Layout from "../../components/Layout";
+import { useNavigate } from "react-router";
 
 function ListCarsPage() {
+  const navigate = useNavigate();
+
   return (
     <Auth>
       <Layout>
@@ -32,14 +43,14 @@ function ListCarsPage() {
                     </div>
                   </Col>
                   <Col>
-                    <div className="mb-4">
-                      <ul className="list-group list-group-horizontal list-unstyled mt-4">
-                        <li className="me-2">Cars</li>
-                        <li className="me-2">
+                    <div className="mb-4 mt-4">
+                      <Breadcrumb>
+                        <BreadcrumbItem href="/listcars">Cars</BreadcrumbItem>
+                        {/* <BreadcrumbItem>
                           <Image src={ArrowPng}></Image>
-                        </li>
-                        <li className="me-2">List Cars</li>
-                      </ul>
+                        </BreadcrumbItem> */}
+                        <BreadcrumbItem active>List Cars</BreadcrumbItem>
+                      </Breadcrumb>
                     </div>
                     <div className="mb-4">
                       <Row>
@@ -50,7 +61,8 @@ function ListCarsPage() {
                           <Button
                             type="submit"
                             variant="primary"
-                            className="rounded-0">
+                            className="rounded-0"
+                            onClick={() => navigate("/addcar")}>
                             + Add New Car
                           </Button>
                         </Col>

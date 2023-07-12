@@ -6,10 +6,12 @@ import EditIcon from "../../assets/image/editIcon.png";
 import KeyIcon from "../../assets/image/StartRentIcon.png";
 import ClockIcon from "../../assets/image/UpdateAtIcon.png";
 import Category from "../../assets/image/CategoryIcon.png";
+import { useNavigate } from "react-router";
 
 function CardCar() {
   //   const category = [{}];
 
+  const navigate = useNavigate();
   return (
     <Card style={{ width: "18rem" }}>
       <Card.Img variant="top" src={CardImage} />
@@ -35,7 +37,8 @@ function CardCar() {
         <Button
           variant="success"
           style={{ width: "45%" }}
-          className="rounded-0">
+          className="rounded-0"
+          onClick={() => navigate("/editcar")}>
           <Image src={EditIcon} className="me-2"></Image>
           Edit
         </Button>

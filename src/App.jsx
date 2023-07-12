@@ -2,6 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./page/Login/Login";
 import ListCarsPage from "./page/List Cars/listCarsPage";
 import DashboardPage from "./page/Dashboard/DashboardPage";
+import AddCarPage from "./page/AddCar";
+import EditCarPage from "./page/EditCar";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +17,14 @@ const router = createBrowserRouter([
   {
     path: "/listcars",
     element: <ListCarsPage />,
+  },
+  {
+    path: "/addcar",
+    element: <AddCarPage />,
+  },
+  {
+    path: "/editcar",
+    element: <EditCarPage />,
   },
 ]);
 

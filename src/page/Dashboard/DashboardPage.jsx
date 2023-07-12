@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import Auth from "../../components/auth/index";
-import auth from "../../utils/auth";
 import Layout from "../../components/Layout";
-import { Container, Row, Col, Button, Image } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Image,
+  Breadcrumb,
+  BreadcrumbItem,
+} from "react-bootstrap";
 import ArrowPng from "../../assets/image/Arrow.png";
 import ReactDatePicker from "react-datepicker";
 import Chart from "../../assets/image/Chart.png";
@@ -18,7 +25,7 @@ const DashboardPage = () => {
           <div
             className="d-flex "
             style={{ backgroundColor: "#F4F5F7", width: "100%" }}>
-            <div className="w-100" style={{ marginLeft: "0px" }}>
+            <div className="w-100">
               {" "}
               <div style={{ backgroundColor: "#F4F5F7" }}>
                 <Row className="d-flex">
@@ -35,14 +42,16 @@ const DashboardPage = () => {
                     </div>
                   </Col>
                   <Col>
-                    <div className="mb-4">
-                      <ul className="list-group list-group-horizontal list-unstyled mt-4">
-                        <li className="me-2">Dashboard</li>
-                        <li className="me-2">
+                    <div className="mb-4 mt-4">
+                      <Breadcrumb>
+                        <BreadcrumbItem href="/listcars">
+                          Dashboard
+                        </BreadcrumbItem>
+                        {/* <BreadcrumbItem>
                           <Image src={ArrowPng}></Image>
-                        </li>
-                        <li className="me-2">Dashboard</li>
-                      </ul>
+                        </BreadcrumbItem> */}
+                        <BreadcrumbItem active>Dashboard</BreadcrumbItem>
+                      </Breadcrumb>
                     </div>
                     <div className="mb-4">
                       <h5 className="border-start border-4 border-primary ps-3">
