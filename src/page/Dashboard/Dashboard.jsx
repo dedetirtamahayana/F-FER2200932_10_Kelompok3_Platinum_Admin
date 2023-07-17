@@ -1,13 +1,10 @@
-import React from "react";
-import Auth from "../../components/auth/index";
-import auth from "../../utils/auth";
+import React from 'react';
+import Dashboard from '../../container/Dashboard/Dashboard';
 
-const Dashboard = () => {
+const DashboardPage = () => {
   return (
-    <Auth>
-      <div>Dashboard</div>
-    </Auth>
-  );
-};
+    <Dashboard />
+  )
+}
 
-export default Dashboard;
+export default DashboardPage

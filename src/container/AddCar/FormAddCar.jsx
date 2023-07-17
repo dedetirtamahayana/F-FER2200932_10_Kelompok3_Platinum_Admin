@@ -15,6 +15,7 @@ const FormAddCar = () => {
     const dispatch = useDispatch();
 
     const { carItem } = useSelector((state) => state.formCar)
+    const [tempUrl, setTempUrl] = useState();
     const [formValues, setFormValues] = useState({
         name: null,
         price: 0,
@@ -26,8 +27,10 @@ const FormAddCar = () => {
     const onChangeFiles = (e) => {
         const selectedFiles = e.target.files;
         const file = selectedFiles[0];
+        const tempUrlValue = URL.createObjectURL(file);
+        setTempUrl(tempUrlValue)
 
-        console.log("select file", selectedFiles)
+        console.log("temp url >>>", tempUrlValue)
 
         setFormValues({
             name: formValues.name,
@@ -173,7 +176,11 @@ const FormAddCar = () => {
                                                 accept="image/png, image/gif, image/jpeg"
                                                 className='forminput'
                                                 onChange={onChangeFiles}
+                                                // value={tempUrl}
                                             />
+                                            <div>
+                                                <img src={tempUrl}></img>
+                                            </div>
                                             <p
                                                 className="mb-0"
                                                 style={{
@@ -239,6 +246,7 @@ const FormAddCar = () => {
                         }}>
                             <Button
                                 className='d-flex align-items-center me-3 btnCancel'
+                                onClick={() => navigate('/carlist')}
                             >
                                 Cancel
                             </Button>
