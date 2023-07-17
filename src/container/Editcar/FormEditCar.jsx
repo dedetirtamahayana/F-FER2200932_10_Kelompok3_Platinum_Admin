@@ -7,13 +7,17 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { update, updateField } from '../../redux/FormCar/slice';
 import swal from "sweetalert";
+import { useParams } from 'react-router-dom'
 
 const FormEditCar = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const params = useParams();
+<<<<<<< HEAD
     const login = useSelector((state) => state.login);
+=======
+>>>>>>> bfa0c5dd1815cf268fc5adb55730686aa2b8867e
 
     const [tempUrl, setTempUrl] = useState()
     const [formValues, setFormValues] = useState({
@@ -30,11 +34,20 @@ const FormEditCar = () => {
             const response = await axios.get(`https://api-car-rental.binaracademy.org/admin/car/${params.id}`,
             {
                 headers: {
+<<<<<<< HEAD
                     access_token: login.user.access_token,
                 }
             }
             );
             // console.log("response", response.data)
+=======
+                    access_token: 
+                        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGJjci5pbyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NTI0MjUwOX0.ZTx8L1MqJ4Az8KzoeYU2S614EQPnqk6Owv03PUSnkzc"
+                }
+            }
+            );
+            console.log("response", response.data)
+>>>>>>> bfa0c5dd1815cf268fc5adb55730686aa2b8867e
             setFormValues(response.data)
         }catch(error) {
             console.log("error", error)
@@ -185,7 +198,11 @@ const FormEditCar = () => {
                                                 accept="image/png, image/gif, image/jpeg"
                                                 className='forminput'
                                                 onChange={onChangeFiles}
+<<<<<<< HEAD
                                                 // value={tempUrl}
+=======
+                                                // value={formValues.image ?? ""}
+>>>>>>> bfa0c5dd1815cf268fc5adb55730686aa2b8867e
                                             />
                                             <p
                                                 className="mb-0"
