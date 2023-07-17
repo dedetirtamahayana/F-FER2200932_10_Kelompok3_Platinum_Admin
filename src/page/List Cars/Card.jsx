@@ -1,31 +1,40 @@
 import React from "react";
 import { Card, Button, Image } from "react-bootstrap";
-import CardImage from "../../assets/image/CardImage.png";
 import DeleteIcon from "../../assets/image/deleteIcon.png";
 import EditIcon from "../../assets/image/editIcon.png";
 import KeyIcon from "../../assets/image/StartRentIcon.png";
-import ClockIcon from "../../assets/image/UpdateAtIcon.png";
-import Category from "../../assets/image/CategoryIcon.png";
+import UpdatedAtIcon from "../../assets/image/UpdateAtIcon.png";
+import CategoryIcon from "../../assets/image/CategoryIcon.png";
 import { useNavigate } from "react-router";
+import "./Card.css";
 
-function CardCar() {
-  //   const category = [{}];
+function CardCar({ name, price, category, image, updatedAt }) {
+  const formatIdr = new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+  });
+  const CATEGORY = {
+    small: "2 - 4 orang",
+    medium: "4 - 6 orang",
+    large: "6 - 8 orang",
+  };
 
   const navigate = useNavigate();
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={CardImage} />
+    <Card className="card">
+      <Card.Img className="cardImage" variant="top" src={image} />
       <Card.Body>
         <Card.Title>
-          <p>Nama/Tipe Mobil</p>
+          <p>{name}</p>
         </Card.Title>
-        <Card.Title>Rp 430.000 / hari </Card.Title>
+        <Card.Title>{formatIdr.format([price])} </Card.Title>
         <Card.Text className="carCategory">
-          <Image src={Category} className="me-2"></Image>6 - 8 people
+          <Image src={CategoryIcon} className="me-2" />
+          {CATEGORY[category]}
         </Card.Text>
         <Card.Text>
-          <Image src={ClockIcon} className="me-2"></Image>
-          Updated at 4 Apr 2022, 09.00
+          <Image src={UpdatedAtIcon} className="me-2" />
+          Updated at {updatedAt}
         </Card.Text>
         <Button
           variant="outline-danger"

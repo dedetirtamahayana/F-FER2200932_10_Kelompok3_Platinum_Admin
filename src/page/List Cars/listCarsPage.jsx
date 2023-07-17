@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Auth from "../../components/auth";
 import Layout from "../../components/Layout";
 import {
@@ -6,18 +6,40 @@ import {
   Row,
   Col,
   Button,
-  Image,
   Breadcrumb,
   BreadcrumbItem,
 } from "react-bootstrap";
 import CardCar from "./Card";
 import ArrowPng from "../../assets/image/Arrow.png";
 import DeleteConfirm from "./DeleteConfirm";
-
 import { useNavigate } from "react-router";
+import axios from "axios";
 
 function ListCarsPage() {
   const navigate = useNavigate();
+  const [cars, setCars] = useState();
+
+  const fetchListCars = async () => {
+    try {
+      const response = await axios.get(
+        "https://api-car-rental.binaracademy.org/admin/v2/car",
+        {
+          headers: {
+            access_token:
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGJjci5pbyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NTI0MjUwOX0.ZTx8L1MqJ4Az8KzoeYU2S614EQPnqk6Owv03PUSnkzc",
+          },
+        }
+      );
+      console.log(response);
+      setCars(response.data.cars);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchListCars();
+  }, []);
 
   return (
     <Auth>
@@ -101,7 +123,7 @@ function ListCarsPage() {
                       </ul>
                     </div>
                     <div>
-                      <Row className=" justify-content-between mb-4">
+                      {/* <Row className=" justify-content-between mb-4">
                         <Col className="col-auto">
                           <CardCar />
                         </Col>
@@ -133,6 +155,23 @@ function ListCarsPage() {
                         <Col className="col-auto">
                           <CardCar />
                         </Col>
+                      </Row> */}
+                      <Row className="g-3">
+                        {cars &&
+                          cars.length > 0 &&
+                          cars.map((item) => (
+                            <Col lg={4}>
+                              <CardCar
+                                key={item.id}
+                                name={item.name}
+                                id={item.id}
+                                image={item.image}
+                                price={item.price}
+                                category={item.category}
+                                updatedAt={item.updatedAt}
+                              />
+                            </Col>
+                          ))}
                       </Row>
                     </div>
                   </Col>
