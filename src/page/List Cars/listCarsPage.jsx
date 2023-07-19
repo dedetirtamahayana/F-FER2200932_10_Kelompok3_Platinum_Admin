@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./ListCarsPage.css";
 import Auth from "../../components/auth";
 import Layout from "../../components/Layout";
 import {
@@ -10,14 +11,15 @@ import {
   BreadcrumbItem,
 } from "react-bootstrap";
 import CardCar from "./Card";
-import ArrowPng from "../../assets/image/Arrow.png";
 import DeleteConfirm from "./DeleteConfirm";
 import { useNavigate } from "react-router";
 import axios from "axios";
 
-function ListCarsPage() {
+function ListCarsPage({ name, price, category, image, updatedAt }) {
   const navigate = useNavigate();
   const [cars, setCars] = useState();
+  const [category1, setCategory1] = useState();
+  const carCategory = {};
 
   const fetchListCars = async () => {
     try {
@@ -30,7 +32,7 @@ function ListCarsPage() {
           },
         }
       );
-      console.log(response);
+      console.log(response.data);
       setCars(response.data.cars);
     } catch (error) {
       console.log("error", error);
@@ -39,8 +41,15 @@ function ListCarsPage() {
 
   useEffect(() => {
     fetchListCars();
-  }, []);
+  }, [category]);
 
+  const [categories, setCategories] = useState(cars);
+  const filterCars = (carCategory) => {
+    const result = cars.filter((currentData) => {
+      return currentData.category === carCategory;
+    });
+    setCategories(result);
+  };
   return (
     <Auth>
       <Layout>
@@ -68,9 +77,6 @@ function ListCarsPage() {
                     <div className="mb-4 mt-4">
                       <Breadcrumb>
                         <BreadcrumbItem href="/listcars">Cars</BreadcrumbItem>
-                        {/* <BreadcrumbItem>
-                          <Image src={ArrowPng}></Image>
-                        </BreadcrumbItem> */}
                         <BreadcrumbItem active>List Cars</BreadcrumbItem>
                       </Breadcrumb>
                     </div>
@@ -95,67 +101,38 @@ function ListCarsPage() {
                         <li className="me-3">
                           <Button
                             variant="outline-primary"
-                            className="rounded-0">
+                            className="rounded-0"
+                            onClick={() => filterCars("small")}>
                             All
                           </Button>
                         </li>
                         <li className="me-3">
                           <Button
                             variant="outline-primary"
-                            className="rounded-0">
-                            2-4 people
+                            className="rounded-0"
+                            onClick={() => filterCars("small")}>
+                            2-4 peoples
                           </Button>
                         </li>
                         <li className="me-3">
                           <Button
                             variant="outline-primary"
-                            className="rounded-0">
+                            className="rounded-0"
+                            onClick={() => filterCars("medium")}>
                             4-6 people
                           </Button>
                         </li>
                         <li className="me-3">
                           <Button
                             variant="outline-primary"
-                            className="rounded-0">
+                            className="rounded-0"
+                            onClick={() => filterCars("large")}>
                             6-8 people
                           </Button>
                         </li>
                       </ul>
                     </div>
                     <div>
-                      {/* <Row className=" justify-content-between mb-4">
-                        <Col className="col-auto">
-                          <CardCar />
-                        </Col>
-                        <Col className="col-auto">
-                          <CardCar />
-                        </Col>
-                        <Col className="col-auto">
-                          <CardCar />
-                        </Col>
-                      </Row>
-                      <Row className=" justify-content-between mb-4">
-                        <Col className="col-auto">
-                          <CardCar />
-                        </Col>
-                        <Col className="col-auto">
-                          <CardCar />
-                        </Col>
-                        <Col className="col-auto">
-                          <CardCar />
-                        </Col>
-                      </Row>
-                      <Row className=" justify-content-between mb-4">
-                        <Col className="col-auto">
-                          <CardCar />
-                        </Col>
-                        <Col className="col-auto">
-                          <CardCar />
-                        </Col>
-                        <Col className="col-auto">
-                          <CardCar />
-                        </Col>
-                      </Row> */}
                       <Row className="g-3">
                         {cars &&
                           cars.length > 0 &&

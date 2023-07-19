@@ -7,11 +7,13 @@ import UpdatedAtIcon from "../../assets/image/UpdateAtIcon.png";
 import CategoryIcon from "../../assets/image/CategoryIcon.png";
 import { useNavigate } from "react-router";
 import "./Card.css";
+import dayjs from "dayjs";
 
 function CardCar({ name, price, category, image, updatedAt }) {
   const formatIdr = new Intl.NumberFormat("id-ID", {
     style: "currency",
     currency: "IDR",
+    minimumFractionDigits: 0,
   });
   const CATEGORY = {
     small: "2 - 4 orang",
@@ -27,14 +29,14 @@ function CardCar({ name, price, category, image, updatedAt }) {
         <Card.Title>
           <p>{name}</p>
         </Card.Title>
-        <Card.Title>{formatIdr.format([price])} </Card.Title>
+        <Card.Title>{formatIdr.format([price])} / hari</Card.Title>
         <Card.Text className="carCategory">
           <Image src={CategoryIcon} className="me-2" />
           {CATEGORY[category]}
         </Card.Text>
         <Card.Text>
           <Image src={UpdatedAtIcon} className="me-2" />
-          Updated at {updatedAt}
+          Updated at ({dayjs(updatedAt).format("DD MMMM YYYY, HH:MM")})
         </Card.Text>
         <Button
           variant="outline-danger"
