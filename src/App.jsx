@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Login from "./page/Login/Login";
 import Dashboard from "./page/Dashboard/Dashboard";
+import DataTable from "./container/data-table/index";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />,
+  },
+  {
+    path: "/datatable",
+    element: <DataTable />,
   },
 ]);
 
