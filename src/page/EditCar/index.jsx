@@ -38,15 +38,11 @@ function EditCar() {
                     <div className="mb-4 mt-4">
                       <Breadcrumb>
                         <BreadcrumbItem href="/listcars">Cars</BreadcrumbItem>
-                        {/* <BreadcrumbItem>
-                          <Image src={ArrowPng}></Image>
-                        </BreadcrumbItem> */}
+
                         <BreadcrumbItem href={"/listcars"}>
                           List Cars
                         </BreadcrumbItem>
-                        {/* <BreadcrumbItem>
-                          <Image src={ArrowPng}></Image>
-                        </BreadcrumbItem> */}
+
                         <BreadcrumbItem active>Edit Car</BreadcrumbItem>
                       </Breadcrumb>
                     </div>
