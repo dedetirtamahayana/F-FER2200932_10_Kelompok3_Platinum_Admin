@@ -3,12 +3,10 @@ import {
   BreadcrumbItem,
   Col,
   Container,
-  Image,
   Row,
 } from "react-bootstrap";
 import Auth from "../../utils/auth";
 import Layout from "../../components/Layout";
-import ArrowPng from "../../assets/image/Arrow.png";
 import FormAddCar from "../../container/AddCar/FormAddCar";
 
 function AddCar(params) {
@@ -46,7 +44,6 @@ function AddCar(params) {
                       </Breadcrumb>
                     </div>
                     <div className="mb-4">
-                      {/* <h1>Add Car Form</h1> */}
                       <FormAddCar />
                     </div>
                   </Col>

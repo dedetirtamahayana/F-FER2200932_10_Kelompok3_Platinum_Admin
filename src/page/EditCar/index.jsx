@@ -3,12 +3,10 @@ import {
   BreadcrumbItem,
   Col,
   Container,
-  Image,
   Row,
 } from "react-bootstrap";
-import Auth from "../../utils/auth";
 import Layout from "../../components/Layout";
-import ArrowPng from "../../assets/image/Arrow.png";
+
 import FormEditCar from "../../container/EditCar/FormEditCar";
 
 function EditCar() {
