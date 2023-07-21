@@ -28,15 +28,19 @@ function ListCarsPage({ name, price, category, image, updatedAt }) {
   };
 
   const fetchListCars = async () => {
+    const config = {
+      headers: {
+        access_token:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGJjci5pbyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NTI0MjUwOX0.ZTx8L1MqJ4Az8KzoeYU2S614EQPnqk6Owv03PUSnkzc",
+      },
+      params: {
+        category: carCategory,
+      },
+    };
     try {
       const response = await axios.get(
         "https://api-car-rental.binaracademy.org/admin/v2/car",
-        {
-          headers: {
-            access_token:
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGJjci5pbyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NTI0MjUwOX0.ZTx8L1MqJ4Az8KzoeYU2S614EQPnqk6Owv03PUSnkzc",
-          },
-        }
+        config
       );
       console.log(response.data);
       setCars(response.data.cars);
@@ -47,40 +51,36 @@ function ListCarsPage({ name, price, category, image, updatedAt }) {
 
   useEffect(() => {
     fetchListCars();
-  }, [category]);
+  }, [cars]);
 
-  const filteredCar = async (e) => {
-    e.preventDefault();
-    const config = {
-      headers: {
-        access_token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGJjci5pbyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NTI0MjUwOX0.ZTx8L1MqJ4Az8KzoeYU2S614EQPnqk6Owv03PUSnkzc",
-      },
-      params: carCategory,
-    };
-    try {
-      const response = await axios.get(
-        `https://api-car-rental.binaracademy.org/admin/v2/car/`,
-        config
-      );
-      dispatch(filter(response.data));
-    } catch (error) {
-      console.log("error", error);
-    }
+  // const filteredCar = async (e) => {
+  //   e.preventDefault();
+  //   const config = {
+  //     headers: {
+  //       access_token:
+  //         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGJjci5pbyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NTI0MjUwOX0.ZTx8L1MqJ4Az8KzoeYU2S614EQPnqk6Owv03PUSnkzc",
+  //     },
+  //     params: {
+  //       category: carCategory,
+  //     },
+  //   };
+  //   try {
+  //     const response = await axios.get(
+  //       `https://api-car-rental.binaracademy.org/admin/v2/car/`,
+  //       config
+  //     );
+  //     dispatch(filter(response.data));
+  //   } catch (error) {
+  //     console.log("error", error);
+  //   }
 
-    // const [categories, setCategories] = useState(cars);
-    // const filterCars = (carCategory) => {
-    //   const result = cars.filter((currentData) => {
-    //     return currentData.category === carCategory;
-    //   });
-    //   setCategories(result);
-  };
-  // const [categories, setCategories] = useState(cars);
-  // const filterCars = (carCategory) => {
-  //   const result = cars.filter((currentData) => {
-  //     return currentData.category === carCategory;
-  //   });
-  //   setCategories(result);
+  //   // const [categories, setCategories] = useState(cars);
+  //   // const filterCars = (carCategory) => {
+  //   //   const result = cars.filter((currentData) => {
+  //   //     return currentData.category === carCategory;
+  //   //   });
+  //   //   setCategories(result);
+  // };
 
   // };
   return (
@@ -134,7 +134,9 @@ function ListCarsPage({ name, price, category, image, updatedAt }) {
                         <li className="me-3">
                           <Button
                             variant="outline-primary"
-                            className="rounded-0">
+                            className="rounded-0"
+                            value=""
+                            onClick={handlecars}>
                             All
                           </Button>
                         </li>
@@ -192,10 +194,6 @@ function ListCarsPage({ name, price, category, image, updatedAt }) {
             </div>
           </div>
         </Container>
-
-        {/* <div>
-        <DeleteConfirm />
-      </div> */}
       </Layout>
     </Auth>
   );

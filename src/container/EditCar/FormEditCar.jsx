@@ -6,13 +6,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { update, updateField } from "../../redux/FormCar/slice";
-import swal from "sweetalert";
+import { Toast, ToastContainer, ToastHeader, ToastBody } from "react-bootstrap";
 
 const FormEditCar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const params = useParams();
   const login = useSelector((state) => state.login);
+  const [isToastShow, setIsToastShow] = useState(false);
+  const [bgToast, setBgToast] = useState();
+  const [showmsg, setShowMsg] = useState();
 
   const [tempUrl, setTempUrl] = useState();
   const [formValues, setFormValues] = useState({
@@ -76,21 +79,51 @@ const FormEditCar = () => {
         formData,
         {
           headers: {
-            access_token: login.user.access_token,
+            access_token:
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGJjci5pbyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NTI0MjUwOX0.ZTx8L1MqJ4Az8KzoeYU2S614EQPnqk6Owv03PUSnkzc",
           },
         }
       );
       // console.log("response>", response)
       dispatch(update(response.data));
-      navigate("/carlist");
+      setBgToast("success");
+      setShowMsg("Data Berhasil Disimpan");
+      setIsToastShow(true);
+      setTimeout(() => {
+        navigate("/listcars");
+      }, 2000);
     } catch (error) {
       dispatch(updateField());
-      swal("Update Gagal", "", "error");
+      setBgToast("danger");
+      setShowMsg("Gagal Update ");
+      setIsToastShow(true);
     }
   };
 
   return (
     <Container fluid>
+      <Row>
+        <Col xs={6}>
+          <ToastContainer className="p-3" position="top-center">
+            {[{ bgToast }].map((variant, idx) => (
+              <Toast
+                className="d-inline-block m-1"
+                bg={bgToast}
+                key={idx}
+                onClose={() => setIsToastShow(false)}
+                show={isToastShow}
+                delay={3000}>
+                <ToastHeader>
+                  <strong className="me-auto">Message</strong>
+                </ToastHeader>
+                <ToastBody className={variant === { bgToast } && "text-white"}>
+                  {showmsg}
+                </ToastBody>
+              </Toast>
+            ))}
+          </ToastContainer>
+        </Col>
+      </Row>
       <Row className="m-0">
         <h4 style={{ height: "100%", marginLeft: "0px" }}>Edit Car</h4>
         <Col xs="auto" className="colEditcar d-none d-md-block h-100"></Col>

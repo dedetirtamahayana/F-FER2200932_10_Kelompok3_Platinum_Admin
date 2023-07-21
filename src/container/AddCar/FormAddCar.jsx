@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
-import swal from "sweetalert";
+import { Toast, ToastContainer, ToastHeader, ToastBody } from "react-bootstrap";
 
 const FormAddCar = () => {
   const navigate = useNavigate();
@@ -21,6 +21,9 @@ const FormAddCar = () => {
     image: "",
     category: null,
   });
+  const [isToastShow, setIsToastShow] = useState(false);
+  const [bgToast, setBgToast] = useState();
+  const [showmsg, setShowMsg] = useState();
 
   const onChangeFiles = (e) => {
     const selectedFiles = e.target.files;
@@ -59,16 +62,19 @@ const FormAddCar = () => {
           },
         }
       );
-      // console.log("response>", response)
+
       dispatch(add(response.data));
-      navigate("/listcars");
-      swal({
-        title: "Data Berhasil Disimpan",
-        button: false,
-      });
+      setBgToast("success");
+      setShowMsg("Data Berhasil Disimpan");
+      setIsToastShow(true);
+      setTimeout(() => {
+        navigate("/listcars");
+      }, 2000);
     } catch (error) {
       dispatch(updateField());
-      swal("Gagal menambahkan", "", "error");
+      setBgToast("danger");
+      setShowMsg("Gagal Update ");
+      setIsToastShow(true);
     }
   };
 
@@ -92,6 +98,28 @@ const FormAddCar = () => {
 
   return (
     <Container fluid className="p-0 m-0 containerAddCar">
+      <Row>
+        <Col xs={6}>
+          <ToastContainer className="p-3" position="top-center">
+            {[{ bgToast }].map((variant, idx) => (
+              <Toast
+                className="d-inline-block m-1"
+                bg={bgToast}
+                key={idx}
+                onClose={() => setIsToastShow(false)}
+                show={isToastShow}
+                delay={3000}>
+                <ToastHeader>
+                  <strong className="me-auto">Message</strong>
+                </ToastHeader>
+                <ToastBody className={variant === { bgToast } && "text-white"}>
+                  {showmsg}
+                </ToastBody>
+              </Toast>
+            ))}
+          </ToastContainer>
+        </Col>
+      </Row>
       <Row className="m-0">
         <h4 style={{ height: "100%" }}>Add Car</h4>
         <Col xs="auto" className="colAddcar d-none d-md-block h-100" />

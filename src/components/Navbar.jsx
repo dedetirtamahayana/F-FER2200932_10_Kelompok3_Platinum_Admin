@@ -1,4 +1,4 @@
-import { Button, Dropdown, Nav, NavDropdown, Navbar } from "react-bootstrap";
+import { Button, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import logo2 from "../../src/assets/image/Rectangle 62.png";
 import iconProfile from "../../src/assets/image/profile.png";
 import hamburger from "../../src/assets/image/fi_menu.png";

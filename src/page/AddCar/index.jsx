@@ -5,7 +5,6 @@ import {
   Container,
   Row,
 } from "react-bootstrap";
-import Auth from "../../utils/auth";
 import Layout from "../../components/Layout";
 import FormAddCar from "../../container/AddCar/FormAddCar";
 
