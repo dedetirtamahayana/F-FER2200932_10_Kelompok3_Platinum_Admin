@@ -1,52 +1,38 @@
 import logo from "../assets/image/Rectangle 63.png";
-import logo2 from "../assets/image/Rectangle 62.png";
 import iconHome from "../assets/image/home.png";
 import iconTruck from "../assets/image/fi_truck.png";
-import { useState } from "react";
+import { useNavigate } from "react-router";
+import "./Sidebar.css";
 
-const SidebarMenu = ({ title }) => {
+function Sidebar() {
+  const navigate = useNavigate();
   return (
-    <div className="vh-100 ps-2 pe-5 py-3" style={{ background: "#FFFFFF" }}>
-      <img src={logo2} alt="" />
-      <h5>DASHBOARD</h5>
-      <p style={{ color: "#8A8A8A" }}>Dashboard</p>
-    </div>
-  );
-};
+    <div>
+      <aside
+        className="d-block"
+        style={{
+          position: "fixed",
+          background: "#0D28A6",
+          top: 0,
+          left: 0,
+          bottom: 0,
+          width: "80px",
+        }}>
+        <div className="d-flex justify-content-center align-items-center mt-3 mb-4">
+          <img src={logo} alt=" "></img>
+        </div>
 
-const Sidebar = ({ isOpenSidebar }) => {
-  const [route, setRoute] = useState("Dashboard");
-  const toggleRoute = (value) => {
-    setRoute(value);
-    console.log(route);
-  };
-
-  return (
-    <div
-      className="d-flex"
-      style={{
-        marginLeft: isOpenSidebar ? "-300px" : 0,
-        width: "300px",
-        transition: "margin 300ms ease-in-out",
-      }}
-    >
-      <div
-        className="vh-100 px-1 text-center text-white py-3"
-        style={{ background: "#0D28A6" }}
-      >
-        <img src={logo} alt="" />
-        <div className="pt-3" onClick={() => toggleRoute("Dashboard")}>
-          <img src={iconHome} alt="" />
+        <button className="homeButton" onClick={() => navigate("/")}>
+          <img src={iconHome} alt=""></img>
           <p>Dashboard</p>
-        </div>
-        <div onClick={() => toggleRoute("Cars")}>
-          <img src={iconTruck} alt="" />
-          <p>Cars</p>
-        </div>
-      </div>
-      <SidebarMenu />
+        </button>
+        <button className="homeButton" onClick={() => navigate("/listcars")}>
+          <img src={iconTruck} style={{ padding: "10px" }} alt=""></img>
+          <p>List Cars</p>
+        </button>
+      </aside>
     </div>
   );
-};
+}
 
 export default Sidebar;
