@@ -17,7 +17,8 @@ function Sidebar() {
           left: 0,
           bottom: 0,
           width: "80px",
-        }}>
+        }}
+      >
         <div className="d-flex justify-content-center align-items-center mt-3 mb-4">
           <img src={logo} alt=" "></img>
         </div>

@@ -9,10 +9,9 @@ import {
   Breadcrumb,
   BreadcrumbItem,
 } from "react-bootstrap";
-import ReactDatePicker from "react-datepicker";
-import Chart from "../../assets/image/Chart.png";
 import "react-datepicker/dist/react-datepicker.css";
-import TableComponent from "../../container/Dashboard/Table";
+import BarChartComponent from "../../components/BarChart";
+import DataTable from "../../container/DataTable/index";
 
 const DashboardPage = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -22,7 +21,8 @@ const DashboardPage = () => {
         <Container fluid style={{ paddingLeft: "80px" }}>
           <div
             className="d-flex "
-            style={{ backgroundColor: "#F4F5F7", width: "100%" }}>
+            style={{ backgroundColor: "#F4F5F7", width: "100%" }}
+          >
             <div className="w-100">
               {" "}
               <div style={{ backgroundColor: "#F4F5F7" }}>
@@ -30,11 +30,13 @@ const DashboardPage = () => {
                   <Col className="col-2 " style={{ height: "550px" }}>
                     <div
                       className="h-100 py-3 "
-                      style={{ background: "white" }}>
+                      style={{ background: "white" }}
+                    >
                       <h5 className="mt-2 mb-4 ps-3">DASHBOARD</h5>
                       <h6
                         className="pt-2 pb-2 ps-3 "
-                        style={{ backgroundColor: "#CFD4ED", width: "100%" }}>
+                        style={{ backgroundColor: "#CFD4ED", width: "100%" }}
+                      >
                         Dashboard
                       </h6>
                     </div>
@@ -56,9 +58,10 @@ const DashboardPage = () => {
                         Rented Car Visualization
                       </h5>
                       <div>
-                        <p>Month</p>
+                        <p>Choose Date</p>
+                        <BarChartComponent />
                       </div>
-                      <div>
+                      {/* <div>
                         <ReactDatePicker
                           selected={startDate}
                           onChange={(date) => setStartDate(date)}
@@ -70,14 +73,11 @@ const DashboardPage = () => {
                         className="mt-4"
                         src={Chart}
                         style={{ width: "70%" }}
-                        alt=""></img>
+                        alt=""
+                      ></img> */}
                     </div>
                     <div className="px-3">
-                      <h4>Dashboard</h4>
-                      <h5 className="border-start border-4 border-primary ps-3">
-                        List Order
-                      </h5>
-                      <TableComponent />
+                      <DataTable />
                     </div>
                   </Col>
                 </Row>
