@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import "react-datepicker/dist/react-datepicker.css";
 import BarChartComponent from "../../components/BarChart";
-import TableComponent from "../../container/Dashboard/Table";
+import DataTable from "../../container/DataTable/index";
 
 const DashboardPage = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -77,11 +77,7 @@ const DashboardPage = () => {
                       ></img> */}
                     </div>
                     <div className="px-3">
-                      <h4>Dashboard</h4>
-                      <h5 className="border-start border-4 border-primary ps-3">
-                        List Order
-                      </h5>
-                      <TableComponent />
+                      <DataTable />
                     </div>
                   </Col>
                 </Row>

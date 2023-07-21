@@ -17,23 +17,18 @@
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
-<<<<<<< HEAD
-    "react-data-table-component": "^7.5.3",
-=======
+    "react-bootstrap-pagination-control": "^1.0.5",
     "react-chartjs-2": "^5.2.0",
+    "react-data-table-component": "^7.5.3",
     "react-date-range": "^1.4.0",
     "react-datepicker": "^4.16.0",
->>>>>>> f567410 (add chart)
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.7",
     "react-router": "^6.12.1",
     "react-router-dom": "^6.12.1",
     "react-scripts": "5.0.1",
-<<<<<<< HEAD
-    "styled-components": "^6.0.4",
-=======
     "recharts": "^2.7.2",
->>>>>>> f567410 (add chart)
+    "styled-components": "^6.0.4",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
