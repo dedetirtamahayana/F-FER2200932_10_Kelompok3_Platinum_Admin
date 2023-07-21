@@ -4,6 +4,7 @@ import ListCarsPage from "./page/List Cars/listCarsPage";
 import DashboardPage from "./page/Dashboard/DashboardPage";
 import AddCarPage from "./page/AddCar";
 import EditCarPage from "./page/EditCar";
+import Chart from "./page/Chart/Chart";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/editcar/:id",
     element: <EditCarPage />,
+  },
+  {
+    path: "/chart",
+    element: <Chart />,
   },
 ]);
 

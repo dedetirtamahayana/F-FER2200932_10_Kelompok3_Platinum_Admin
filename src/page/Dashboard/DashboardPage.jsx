@@ -13,6 +13,9 @@ import ReactDatePicker from "react-datepicker";
 import Chart from "../../assets/image/Chart.png";
 import "react-datepicker/dist/react-datepicker.css";
 import TableComponent from "../../container/Dashboard/Table";
+import BarChartComponent from "../../components/BarChart";
+import DataTable from "react-data-table-component";
+import DashboardTableComponent from "../../components/Table/index";
 
 const DashboardPage = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -45,9 +48,6 @@ const DashboardPage = () => {
                         <BreadcrumbItem href="/listcars">
                           Dashboard
                         </BreadcrumbItem>
-                        {/* <BreadcrumbItem>
-                          <Image src={ArrowPng}></Image>
-                        </BreadcrumbItem> */}
                         <BreadcrumbItem active>Dashboard</BreadcrumbItem>
                       </Breadcrumb>
                     </div>
@@ -56,28 +56,16 @@ const DashboardPage = () => {
                         Rented Car Visualization
                       </h5>
                       <div>
-                        <p>Month</p>
+                        <p>Choose Date</p>
+                        <BarChartComponent />
                       </div>
-                      <div>
-                        <ReactDatePicker
-                          selected={startDate}
-                          onChange={(date) => setStartDate(date)}
-                          isClearable
-                        />
-                        <Button className="ms-2">Go</Button>
-                      </div>
-                      <img
-                        className="mt-4"
-                        src={Chart}
-                        style={{ width: "70%" }}
-                        alt=""></img>
                     </div>
                     <div className="px-3">
                       <h4>Dashboard</h4>
                       <h5 className="border-start border-4 border-primary ps-3">
                         List Order
                       </h5>
-                      <TableComponent />
+                      <DashboardTableComponent />
                     </div>
                   </Col>
                 </Row>
