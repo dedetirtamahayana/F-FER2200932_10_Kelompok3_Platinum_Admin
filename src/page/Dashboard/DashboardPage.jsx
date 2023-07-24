@@ -9,7 +9,6 @@ import {
   Breadcrumb,
   BreadcrumbItem,
 } from "react-bootstrap";
-import ReactDatePicker from "react-datepicker";
 import Chart from "../../assets/image/Chart.png";
 import "react-datepicker/dist/react-datepicker.css";
 import TableComponent from "../../container/Dashboard/Table";
@@ -61,10 +60,6 @@ const DashboardPage = () => {
                       </div>
                     </div>
                     <div className="px-3">
-                      <h4>Dashboard</h4>
-                      <h5 className="border-start border-4 border-primary ps-3">
-                        List Order
-                      </h5>
                       <DashboardTableComponent />
                     </div>
                   </Col>

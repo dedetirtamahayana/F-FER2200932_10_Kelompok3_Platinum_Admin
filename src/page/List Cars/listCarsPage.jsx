@@ -53,36 +53,6 @@ function ListCarsPage({ name, price, category, image, updatedAt }) {
     fetchListCars();
   }, [cars]);
 
-  // const filteredCar = async (e) => {
-  //   e.preventDefault();
-  //   const config = {
-  //     headers: {
-  //       access_token:
-  //         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGJjci5pbyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTY2NTI0MjUwOX0.ZTx8L1MqJ4Az8KzoeYU2S614EQPnqk6Owv03PUSnkzc",
-  //     },
-  //     params: {
-  //       category: carCategory,
-  //     },
-  //   };
-  //   try {
-  //     const response = await axios.get(
-  //       `https://api-car-rental.binaracademy.org/admin/v2/car/`,
-  //       config
-  //     );
-  //     dispatch(filter(response.data));
-  //   } catch (error) {
-  //     console.log("error", error);
-  //   }
-
-  //   // const [categories, setCategories] = useState(cars);
-  //   // const filterCars = (carCategory) => {
-  //   //   const result = cars.filter((currentData) => {
-  //   //     return currentData.category === carCategory;
-  //   //   });
-  //   //   setCategories(result);
-  // };
-
-  // };
   return (
     <Auth>
       <Layout>
@@ -120,6 +90,7 @@ function ListCarsPage({ name, price, category, image, updatedAt }) {
                         </Col>
                         <Col className="col-6 d-flex justify-content-end">
                           <Button
+                            data-testid="ButtonAddCar"
                             type="submit"
                             variant="primary"
                             className="rounded-0"
@@ -133,6 +104,7 @@ function ListCarsPage({ name, price, category, image, updatedAt }) {
                       <ul className="list-group list-group-horizontal list-unstyled">
                         <li className="me-3">
                           <Button
+                            data-testid="ButtonFilterCategory"
                             variant="outline-primary"
                             className="rounded-0"
                             value=""

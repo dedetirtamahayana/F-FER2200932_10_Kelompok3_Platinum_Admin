@@ -30,7 +30,7 @@ function CardCar({ id, name, price, category, image, updatedAt }) {
         onHide={() => setShowConfirm(false)}
         id={id}
       />
-      <Card className="card">
+      <Card className="card" data-testid="CardCars">
         <Card.Img className="cardImage" variant="top" src={image} />
         <Card.Body>
           <Card.Title>

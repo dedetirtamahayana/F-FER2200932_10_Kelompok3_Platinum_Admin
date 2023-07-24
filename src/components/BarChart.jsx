@@ -75,6 +75,7 @@ const BarChartComponent = () => {
           value={endDate}
           onChange={handleChangeEndDate}
         />
+
         <button className="btn btn-primary" onClick={handleGetData}>
           Get Data
         </button>
@@ -86,8 +87,7 @@ const BarChartComponent = () => {
             margin={{
               left: 50,
               bottom: 50,
-            }}
-          >
+            }}>
             <CartesianGrid />
             <XAxis
               dataKey="day"
