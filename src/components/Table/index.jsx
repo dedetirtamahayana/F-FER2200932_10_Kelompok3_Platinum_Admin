@@ -13,7 +13,7 @@ import {
 
 function Dashboard() {
   const {
-    table: { page, pageSize },
+    table: { page, pageSize, sort },
   } = useSelector((state) => state.dashboard);
   const dispatch = useDispatch();
 
@@ -26,6 +26,7 @@ function Dashboard() {
           params: {
             page,
             pageSize,
+            sort,
           },
           headers: {
             access_token:
@@ -34,6 +35,7 @@ function Dashboard() {
         }
       );
       dispatch(fetchDataSuccess(response.data));
+      console.log(fetchOrders);
     } catch (error) {
       console.log("error >", error);
       dispatch(fetchDataFailed());
@@ -42,7 +44,7 @@ function Dashboard() {
 
   useEffect(() => {
     fetchOrders();
-  }, [page, pageSize]);
+  }, [page, pageSize, sort]);
 
   return (
     <div className="section-table">

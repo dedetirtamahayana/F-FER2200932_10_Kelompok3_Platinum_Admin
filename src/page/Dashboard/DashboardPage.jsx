@@ -10,7 +10,7 @@ import {
   BreadcrumbItem,
 } from "react-bootstrap";
 import "react-datepicker/dist/react-datepicker.css";
-import BarChartComponent from "../../components/BarChart";
+import BarChartComponent from "../../components/Chart/BarChart";
 import DataTable from "../../container/DataTable/index";
 
 const DashboardPage = () => {

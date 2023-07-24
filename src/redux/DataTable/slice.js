@@ -7,10 +7,14 @@ const dashboardSlice = createSlice({
       data: null,
       page: 1,
       pageSize: 10,
+      sort: null,
     },
     loading: false,
   },
   reducers: {
+    setSort(state, action) {
+      state.table.sort = action.payload;
+    },
     setPage(state, action) {
       state.table.page = action.payload;
     },
@@ -34,6 +38,7 @@ const dashboardSlice = createSlice({
 });
 
 export const {
+  setSort,
   setPage,
   setPageSize,
   fetchDataProgress,

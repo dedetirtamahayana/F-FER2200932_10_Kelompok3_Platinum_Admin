@@ -1,0 +1,13 @@
+.table th {
+    background: #CFD4ED;
+    padding: 12px;
+  }
+.arrow-down {
+    position: relative;
+
+}
+.arrow-up {
+    left: 16px;
+    bottom: 2px;
+    position: relative;
+}

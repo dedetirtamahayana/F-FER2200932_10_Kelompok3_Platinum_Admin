@@ -1,0 +1,9 @@
+.btn-date-picker{
+    background-color: #0D28A6;
+    color: #fff;
+    border-radius: 0;
+}
+.btn-date-picker:hover{
+    background-color: #1134cd;
+    color: #fff;
+}
